@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Fixação 01 - Isabella de Sena Bernucci</title>
+</head>
+
+<body>
+
+    <!-- Prof, desculpa pelo vacilo! Achei que fosse pra entregar a atividade até domingo (erro meu)
+    Inspirada pelo gênio Carlos, seguem os códigos referentes aos 5 exercícios. Não ficou totalmente excelente como o dele, mas gostei da estruturação que evita o prompt
+    -->
+
+    <script>
+        function media_bimestral() {
+            var n1 = parseFloat(document.getElementById('n1').value);
+            var n2 = parseFloat(document.getElementById('n2').value);
+            var n3 = parseFloat(document.getElementById('n3').value);
+            var n4 = parseFloat(document.getElementById('n4').value);
+            document.getElementById('result').value = ((n1 + n2 + n3 + n4) / 4).toFixed(1);
+        }
+
+        function area_circ() {
+            var raio = parseFloat(document.getElementById('raio').value);
+            document.getElementById('resultado').value = (Math.PI * Math.pow(raio, 2)).toFixed(2);
+        }
+
+        function celsius() {
+            var fahr = parseFloat(document.getElementById('fahr').value);
+            document.getElementById('conversao').value = (5 * (fahr - 32) / 9).toFixed(1);
+        }
+
+        function sala_ret() {
+            var comp_1 = parseFloat(document.getElementById('comp_1').value);
+            var larg_1 = parseFloat(document.getElementById('larg_1').value);
+            document.getElementById('area').value = (comp_1 * larg_1).toFixed(2);
+            document.getElementById('per').value = (2 * (comp_1 + larg_1)).toFixed(2);
+        }
+
+        function cozinha() {
+            var comp_2 = parseFloat(document.getElementById('comp_2').value);
+            var larg_2 = parseFloat(document.getElementById('larg_2').value);
+            document.getElementById('qtd_caixas').value = ((comp_2 * larg_2) / 2.5).toFixed(1);
+        }
+    </script>
+
+    <h2>Exercício #1</h2>
+    Digite as quatro notas bimestrais:<br>
+    <ul>
+        <li>Nota 1: <input type="text" id="n1"></li>
+        <li>Nota 2: <input type="text" id="n2"></li>
+        <li>Nota 3: <input type="text" id="n3"></li>
+        <li>Nota 4: <input type="text" id="n4"></li>
+    </ul>
+
+    <button onclick="media_bimestral();">Clique aqui</button> para calcular a média das notas acima: <input type="text"
+        id="result"><br>
+
+    <h2>Exercício #2</h2>
+    Digite o raio de um círculo, em metros: <input type="text" id="raio"><br>
+    Clique no botão "=" para realizar o cálculo da área <button onclick="area_circ();">=</button><input type="text"
+        id="resultado"> m²<br>
+
+    <h2>Exercício #3</h2>
+    Digite a temperatura na escala Fahrenheit:<input type="text" id="fahr"> ºF<br>
+    <button onclick="celsius();">Clique aqui</button> para realizar o cálculo de conversão para Celsius: <input
+        type="text" id="conversao"> ºC<br>
+
+    <h2>Exercício #4</h2>
+    Digite as medidas da sala, em metros:<br>
+    <ul>
+        <li>Comprimento: <input type="text" id="comp_1"> m</li>
+        <li>Largura: <input type="text" id="larg_1"> m</li>
+    </ul>
+    Clique no botão a seguir para realizar os cálculos de área e perímetro, respectivamente: <button
+        onclick="sala_ret();">Resultado</button><br>
+    Área <input type="text" id="area"> m²<br>
+    Perímetro <input type="text" id="per"> m<br>
+
+    <h2>Exercício #5</h2>
+    Digite as dimensões da cozinha, em metros:<br>
+    <ul>
+        <li>Comprimento: <input type="text" id="comp_2"> m</li>
+        <li>Largura: <input type="text" id="larg_2"> m</li>
+    </ul>
+    Clique no botão "=" para calcularmos a quantidade de caixas de azulejos necessários para cobrir o chão da
+    cozinha:<br>
+
+    Nº de caixas<button onclick="cozinha();">=</button><input type="text" id="qtd_caixas">
+
+</body>
+
+</html>
