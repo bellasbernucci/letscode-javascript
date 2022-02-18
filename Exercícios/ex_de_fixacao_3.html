@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Fixação 03 - Isabella de Sena Bernucci</title>
+    <style>
+        h2 {
+            background-color:darkslategray;
+            opacity: 0.7;
+            color: antiquewhite;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        function media_notas(n1, n2) {
+            let media = ((parseFloat(n1) + parseFloat(n2)) / 2).toFixed(2);
+            if (media < 7) {
+                alert("Reprovado");
+            } else if (media >= 7 && media < 10) {
+                alert("Aprovado");
+            } else if (media == 10) {
+                alert("Aprovado com Distinção");
+            }
+        }
+
+        function aumento_salario(salario) {
+            let old_salario = (parseFloat(salario)).toFixed(2);
+            let newLine = "\r\n"
+            if (old_salario <= 280) {
+                let new_salario = (old_salario * 1.2).toFixed(2);
+                let aumento = (old_salario * 0.2).toFixed(2);
+                alert("- Salário antes do reajuste: R$" + old_salario + newLine +
+                    "- Percentual de aumento aplicado: 20%" + newLine +
+                    "- Valor do aumento: R$" + aumento + newLine +
+                    "- Novo salário após aumento: R$" + new_salario);
+            } else if (old_salario > 280 && old_salario <= 700) {
+                let new_salario = (old_salario * 1.15).toFixed(2);
+                let aumento = (old_salario * 0.15).toFixed(2);
+                alert("- Salário antes do reajuste: R$" + old_salario + newLine +
+                    "- Percentual de aumento aplicado: 15%" + newLine +
+                    "- Valor do aumento: R$" + aumento + newLine +
+                    "- Novo salário após aumento: R$" + new_salario);
+            } else if (old_salario > 700 && old_salario <= 1500) {
+                let new_salario = (old_salario * 1.10).toFixed(2);
+                let aumento = (old_salario * 0.10).toFixed(2);
+                alert("- Salário antes do reajuste: R$" + old_salario + newLine +
+                    "- Percentual de aumento aplicado: 10%" + newLine +
+                    "- Valor do aumento: R$" + aumento + newLine +
+                    "- Novo salário após aumento: R$" + new_salario);
+            } else if (old_salario > 1500) {
+                let new_salario = (old_salario * 1.05).toFixed(2);
+                let aumento = (old_salario * 0.05).toFixed(2);
+                alert("- Salário antes do reajuste: R$" + old_salario + newLine +
+                    "- Percentual de aumento aplicado: 5%" + newLine +
+                    "- Valor do aumento: R$" + aumento + newLine +
+                    "- Novo salário após aumento: R$" + new_salario);
+            }
+        }
+
+        function desconto_IR(sal_b) {
+            let salario_bruto = parseFloat(sal_b);
+            if (salario_bruto <= 900) {
+                let sal_descontado = (parseFloat(salario_bruto) * 0).toFixed(2)
+                return sal_descontado;
+            } else if (salario_bruto > 900 && salario_bruto <= 1500) {
+                let sal_descontado = (parseFloat(salario_bruto) * 0.05).toFixed(2);
+                return sal_descontado;
+            } else if (salario_bruto > 1500 && salario_bruto <= 2500) {
+                let sal_descontado = (parseFloat(salario_bruto) * 0.10).toFixed(2)
+                return sal_descontado;
+            } else if (salario_bruto > 2500) {
+                let sal_descontado = (parseFloat(salario_bruto) * 0.20).toFixed(2)
+                return sal_descontado;
+            }
+        }
+
+        function folha_pgto(reais_hora, hora_trab) {
+            let valor_hra = parseInt(reais_hora);
+            let bco_horas = parseInt(hora_trab);
+            let sal_bruto = (parseFloat(valor_hra * bco_horas)).toFixed(2);
+            let desconto_leao = desconto_IR(sal_bruto);
+            let desconto_INSS = (parseFloat(0.1 * sal_bruto)).toFixed(2);
+            let fgts = (parseFloat(0.11 * sal_bruto)).toFixed(2);
+            let tot_descontos = (0.1 * parseFloat(sal_bruto) + parseFloat(desconto_leao)).toFixed(2);
+            let sal_liquido = (parseFloat(sal_bruto) - 0.1 * parseFloat(sal_bruto) - parseFloat(desconto_leao)).toFixed(2);
+
+            let newLine = "\r\n"
+            console.log(valor_hra, bco_horas, sal_bruto, desconto_leao)
+            if (sal_bruto <= 900) {
+                desconto = "0%";
+            } else if (sal_bruto > 900 && sal_bruto <= 1500) {
+                desconto = "5%";
+            } else if (sal_bruto > 1500 && sal_bruto <= 2500) {
+                desconto = "10%";
+            } else if (sal_bruto > 2500) {
+                desconto = "20%";
+            }
+            alert("Salário bruto: " + "(" + valor_hra + " * " + bco_horas + ") -> R$" + sal_bruto + newLine +
+                "(-) IR (" + desconto + "): R$" + desconto_leao + newLine +
+                "(-) INSS (10%): R$" + desconto_INSS + newLine +
+                "FGTS (11%): R$" + fgts + newLine +
+                "Total de descontos: R$" + tot_descontos + newLine +
+                "Salário Líquido: R$" + sal_liquido)
+        }
+
+    </script>
+
+    <div>
+        <h2>Exercício #1</h2>
+
+        <p>Caro aluno, digite suas duas notas tiradas nas provas:</p>
+
+        <form>
+            Primeira nota:<br>
+            <input type="text" id="nota1"><br>
+            Segunda nota:<br>
+            <input type="text" id="nota2"><br>
+
+            <input type="button" onclick="javascript:media_notas(nota1.value, nota2.value);" value="Cálculo da Média">
+        </form>
+    </div>
+
+    <div>
+        <h2>Exercício #2</h2>
+
+        <form>
+            Digite aqui o salário do colaborador:
+            <input type="text" id="salario"><br>
+
+            <input type="button" onclick="javascript:aumento_salario(salario.value);" value="Cálculo do Reajuste">
+        </form>
+    </div>
+
+    <div>
+        <h2>Exercício #3</h2>
+
+        <p>Cálculo de salário líquido e descontos em folha de pagamento.</p>
+
+        <form>
+            Preencha o valor de sua hora de trabalho:<br>
+            <input type="text" id="val_hora"><br>
+            Preencha o total de horas trabalhadas no mês:<br>
+            <input type="text" id="hora_trab"><br>
+
+            <input type="button" onclick="javascript:folha_pgto(val_hora.value, hora_trab.value);"
+                value="Cálculo do Salário Líquido">
+        </form>
+    </div>
+
+</body>
+
+</html>
