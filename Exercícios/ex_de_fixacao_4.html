@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+
+        function impares() {
+
+            let nimpares = "";
+            for (let i = 1; i < 50; i = i + 2) {
+
+
+                if (i == 49) {
+                    nimpares += i + ".";
+                } else {
+                    nimpares += i + ", ";
+
+                }
+
+            }
+            document.getElementById("ratv1").innerHTML = nimpares;
+        }
+
+        function tabuada() {
+
+            const mensagem = document.getElementById("mensagem");
+            mensagem.innerHTML = "";
+            let num = document.getElementById("tabuadinha").value;
+            try{
+   
+                if(num == ""){
+                    throw "Input vazio.";
+                }
+                if(isNaN(num)){
+                    throw "Não é um número.";
+                }
+                if(num > 10 || num < 1){
+                    throw "O valor deve estar entre 1 e 10.";
+                }
+                let resultado = document.getElementById('ratv2');
+                let tabuada = "";
+
+                for(let count=1; count<=10 ; count++){
+                    tabuada += num + " x " + count + " = " + num*count+"<br>"; 
+                }  
+                resultado.innerHTML = tabuada;
+
+            }
+            catch(err) {
+                mensagem.innerHTML = "Input inválido! " + err;
+            }
+        }
+
+    </script>
+
+    <div class="atv1">
+        <h2>Exercício #1</h2>
+
+        <p>¡Hola! Vamos descobrir os números ímpares entre 1 e 50 <button onclick="impares()">clicando aqui</button>:
+        </p>
+
+        <div id="ratv1"></div>
+        <hr>
+    </div>
+
+    <div class="atv2">
+        <h2>Exercício #2</h2>
+
+        <p>Oie! Vamos praticar a tabuada. Digite um número entre 1 e 10 e, depois, clique em "calcular". 
+        </p>
+        Tabuada do
+        <input type="text" name="number" id="tabuadinha" size="1px"><button onclick="tabuada()">calcular</button>
+        <br>
+   
+        <div id="ratv2"></div>
+        <hr>
+        <p id="mensagem"></p>
+    
+    </div>
+
+</body>
+
+</html>
