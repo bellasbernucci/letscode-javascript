@@ -11,7 +11,6 @@
 
 <body>
     <script>
-
         function impares() {
 
             let nimpares = "";
@@ -34,31 +33,64 @@
             const mensagem = document.getElementById("mensagem");
             mensagem.innerHTML = "";
             let num = document.getElementById("tabuadinha").value;
-            try{
-   
-                if(num == ""){
+            try {
+
+                if (num == "") {
                     throw "Input vazio.";
                 }
-                if(isNaN(num)){
+                if (isNaN(num)) {
                     throw "Não é um número.";
                 }
-                if(num > 10 || num < 1){
+                if (num > 10 || num < 1) {
                     throw "O valor deve estar entre 1 e 10.";
                 }
                 let resultado = document.getElementById('ratv2');
                 let tabuada = "";
 
-                for(let count=1; count<=10 ; count++){
-                    tabuada += num + " x " + count + " = " + num*count+"<br>"; 
-                }  
+                for (let count = 1; count <= 10; count++) {
+                    tabuada += num + " x " + count + " = " + num * count + "<br>";
+                }
                 resultado.innerHTML = tabuada;
 
-            }
-            catch(err) {
+            } catch (err) {
                 mensagem.innerHTML = "Input inválido! " + err;
             }
         }
 
+        function numb_array() {
+
+            const mensagem_err = document.getElementById("mensagem_err");
+            mensagem_err.innerHTML = "";
+
+            let arr = [];
+            let resultado = document.getElementById('ratv3');
+            let user_inp = prompt("Entre com um valor: ");
+
+            while (user_inp !== "fim") {
+                if (user_inp == "") {
+                    alert("Input vazio!");
+                    break;
+                }
+                if (isNaN(user_inp)) {
+                    alert("Input inválido! Deve ser um número.");
+                    break;
+                }
+                let elem_array = parseInt(user_inp);
+                arr.push(elem_array);
+
+                user_inp = prompt("Entre com um valor: ");
+
+            }
+            if (arr.length == 0) {
+                alert("Sem números suficientes para o array");
+            } else {
+
+                let maximo = Math.max(...arr);
+                let minimo = Math.min(...arr);
+                resultado.innerHTML = "O valor maximo é: " + maximo + ". O valor mínimo é " + minimo + ".";
+
+            }
+        }
     </script>
 
     <div class="atv1">
@@ -74,16 +106,31 @@
     <div class="atv2">
         <h2>Exercício #2</h2>
 
-        <p>Oie! Vamos praticar a tabuada. Digite um número entre 1 e 10 e, depois, clique em "calcular". 
+        <p>Oie! Vamos praticar a tabuada. Digite um número entre 1 e 10 e, depois, clique em "calcular".
         </p>
         Tabuada do
-        <input type="text" name="number" id="tabuadinha" size="1px"><button onclick="tabuada()">calcular</button>
+        <input type="text" name="number" id="tabuadinha" size="10"><button onclick="tabuada()">calcular</button>
         <br>
-   
+
         <div id="ratv2"></div>
-        <hr>
         <p id="mensagem"></p>
-    
+        <hr>
+
+    </div>
+
+    <div class="atv3">
+        <h2>Exercício #3</h2>
+
+        <p>Vamos preencher uma listinha de números e calcular o maior e menor valor.
+        </p>
+        Preencha um valor no prompt e, quando terminar, digite <i>fim</i>:<br>
+        <input type="button" onclick="numb_array()" value="Array">
+        <br>
+
+        <div id="ratv3"></div>
+        <p id="mensagem_err"></p>
+        <hr>
+
     </div>
 
 </body>
