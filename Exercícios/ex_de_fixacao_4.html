@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Atividade de Fixação 04 - Isabella de Sena Bernucci</title>
 
 </head>
 
@@ -81,13 +81,18 @@
                 user_inp = prompt("Entre com um valor: ");
 
             }
-            if (arr.length == 0) {
+            if (arr.length == 0 && user_inp == "fim") {
                 alert("Sem números suficientes para o array");
             } else {
 
                 let maximo = Math.max(...arr);
                 let minimo = Math.min(...arr);
-                resultado.innerHTML = "O valor maximo é: " + maximo + ". O valor mínimo é " + minimo + ".";
+
+                if (arr.length !== 0) {
+
+                    resultado.innerHTML = "O valor maximo é: " + maximo + ". O valor mínimo é " + minimo + ".";
+
+                }
 
             }
         }
